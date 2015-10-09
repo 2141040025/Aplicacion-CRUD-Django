@@ -1,0 +1,22 @@
+{# {% extends "base_generic.html" %} #}
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Borrar Profesor</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{% static "css/style.css" %}">
+</head>
+<body>
+
+	<form method="post">{% csrf_token %}
+	    <p>Estas seguro de querer borrar a "<b><i>{{ profesor }}</i></b>" ?</p>
+	    <br>
+	    <input type="submit" value="Borrar" />
+	    <a href="/profesor/{{profesor.id}}">Cancelar</a>
+	</form>
+
+</body>
+</html>

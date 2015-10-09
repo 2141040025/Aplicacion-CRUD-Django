@@ -1,0 +1,57 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Detalles del Profesor</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{% static "css/style.css" %}">
+</head>
+<body>
+	
+
+	<div class="wrapper">
+		<a href="/">Regresar</a>
+		<br><br><br><br>
+		<div class="row">
+			<div class="col-md-6">
+				<h4>NOMBRE:</h4>
+				<p>{{profesor.nombre|upper}}</p>
+				<br>
+				<h4>DIRECCIÓN:</h4>
+				<p>{{profesor.direccion|upper}}</p>
+				<br>
+				<h4>DEPARTAMENTO:</h4>
+				<p>{{profesor.departamento|upper}}</p>
+			</div>
+			
+			<div class="col-md-6">
+			{% if profesor.imagen %}  {# Si profesor tiene imagen... mostrarla	#}		
+				<div class="img">
+					<img src="{{ profesor.imagen.url}}" width="200" height="200" border="1">
+				</div>
+
+			{% else %}
+
+				<div class="img">
+					<img src="{% static "img/nouser.jpg" %}" width="200" height="200" border="1">
+				</div>			
+				
+			{% endif %}							
+			</div>
+		
+		</div>	
+		<br><br><br><br>
+		<div class="row">
+			<div class="col-md-6">
+				<a href="editar/{{profesor.id}}">Editar Profesor</a>
+				<br>
+				<a href="borrar/{{profesor.id}}">Borrar Profesor</a>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>

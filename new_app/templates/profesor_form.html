@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Crear Profesor</title>
+</head>
+<body>
+<style>
+	ul.errorlist {display:none;}
+</style>
+	{# ------------------------------------------------- #}
+
+		{% if form.errors %}
+			<!-- Error messaging -->
+			<div id="errors">
+				<div class="inner">
+					<p>Porfavor rellena los siguientes campos:</p>
+					{{ form.non_field_errors }}
+					<ul>
+						{% for field in form %}
+							{% if field.errors %}
+								<li>{{ field.label }}: {{ field.errors|striptags }}</li>
+							{% endif %}
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+			<!-- /Error messaging -->
+		{% endif %}
+
+		<form method="POST">{% csrf_token %}
+
+			{{form.as_p}}
+			<input type="submit" value="Ok">
+
+		</form>
+		
+	{# ------------------------------------------------- #}
+
+
+</body>
+</html>
